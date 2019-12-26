@@ -1,0 +1,33 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "experimentalObjectRestSpread": true
+        },
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "airbnb",
+        "airbnb/hooks",
+        "prettier",
+        "prettier/react"
+    ],
+    "env": {
+        "browser": true,
+        "jest": true,
+        "node": true
+    },
+    "rules": {
+        "react/jsx-filename-extension": 0
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    
+}
