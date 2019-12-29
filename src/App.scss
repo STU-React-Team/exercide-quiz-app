@@ -1,3 +1,44 @@
+.modal {
+  position: fixed;
+  z-index: 1;
+  padding-top: 30vh;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &__content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    border-radius: 5px;
+  }
+
+  &__close {
+    color: red;
+    opacity: 0.5;
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__btn {
+    text-align: right;
+    padding-right: 20px;
+    a {
+      margin-right: 10px;
+    }
+  }
+}
+
 .app {
   background-color: #f9fafb;
   min-height: 100vh;
@@ -19,6 +60,9 @@
       font-size: 45px;
       color: #007bff;
     }
+    &--italic {
+      font-style: italic;
+    }
   }
 
   &__welcome {
@@ -28,7 +72,10 @@
 
   &__control {
     display: flex;
-    justify-content: center;
+    max-width: 300px;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
     padding: 20px 0;
   }
 
@@ -42,6 +89,7 @@
     outline: none;
     background-color: #fff;
     color: #007bff;
+    height: 41px;
     display: inline-block;
     transition: all 0.3s;
     cursor: pointer;
@@ -59,12 +107,19 @@
     }
   }
 
+  &__question {
+    font-size: 22px;
+    padding-bottom: 30px;
+    font-weight: bold;
+    line-height: 1.1;
+  }
+
   &-answer {
     display: flex;
     flex-wrap: wrap;
 
     &__item {
-      width: 50%;
+      width: 100%;
       margin-bottom: 10px;
 
       label {
@@ -124,6 +179,15 @@
 }
 .container {
   background-color: #f9fafb;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .app-answer__item {
+    width: 50%;
+  }
+  .container {
+    width: 70%;
+  }
 }
