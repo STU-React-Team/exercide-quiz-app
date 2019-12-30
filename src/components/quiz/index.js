@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import Question from 'components/Question';
-import { useSelector } from 'react-redux';
+import Question from 'components/question/';
+import { onShowBtnFinish } from 'redux/actions/';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Quiz = () => {
   const [indexQuestion, setIndexQuestion] = useState(0);
-  const [showModal, setShowModal] = useState(false);
-  const { questions } = useSelector(state => state);
+  const [isModal, setIsModal] = useState(false);
+  const { questions, showBtnFinish } = useSelector(state => state);
   const { options, name } = questions[indexQuestion];
+  const dispatch = useDispatch();
 
   const onShowModal = e => {
-    const dataShowModal = e.target.dataset.show_modal;
-    setShowModal(Boolean(dataShowModal));
+    const dataSetShowModal = e.target.dataset.show_modal;
+    setIsModal(Boolean(dataSetShowModal));
   };
-
   useEffect(() => {
     document.addEventListener('click', onShowModal);
     return () => {
@@ -27,12 +28,15 @@ const Quiz = () => {
   };
   const onNextQuestion = e => {
     if (indexQuestion === 9) e.preventDefault();
-    else setIndexQuestion(indexQuestion + 1);
+    else if (indexQuestion === 8) {
+      dispatch(onShowBtnFinish(true));
+      setIndexQuestion(indexQuestion + 1);
+    } else setIndexQuestion(indexQuestion + 1);
   };
 
   return (
     <div>
-      {showModal ? (
+      {isModal ? (
         <div className="modal" data-show_modal="">
           <div className="modal__content">
             <span className="modal__close" data-show_modal="">
@@ -40,14 +44,14 @@ const Quiz = () => {
             </span>
             <h2 className="app__heading">Are you finished?</h2>
             <div className="modal__btn">
-              <Link to="/" className="app__link">
-                Agree
+              <Link to="/results" className="app__link">
+                Ok
               </Link>
               <button
                 className="app__link app__link--cancel"
                 type="button"
                 data-show_modal="">
-                Cancel
+                No
               </button>
             </div>
           </div>
@@ -55,10 +59,11 @@ const Quiz = () => {
       ) : null}
 
       <Question
-        name={name}
+        nameQuestion={name}
         indexQuestion={indexQuestion}
         options={options}
-        disabled={false}
+        disabledOption={false}
+        checkAnswer={false}
       />
       <div className="app__control">
         <div>
@@ -72,9 +77,11 @@ const Quiz = () => {
           </button>
         </div>
         <div>
-          <button className="app__link" data-show_modal type="button">
-            Finish
-          </button>
+          {showBtnFinish ? (
+            <button className="app__link" data-show_modal type="button">
+              Finish
+            </button>
+          ) : null}
         </div>
         <div>
           <button

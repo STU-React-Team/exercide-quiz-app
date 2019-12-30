@@ -8,7 +8,8 @@ import {
 } from 'react-router-dom';
 import { fetchQuestions } from 'redux/actions/';
 import { useDispatch, useSelector } from 'react-redux';
-import Quiz from 'components/Quiz';
+import Quiz from 'components/quiz/';
+import Results from 'components/results/';
 import 'App.scss';
 
 const App = () => {
@@ -36,6 +37,9 @@ const App = () => {
             </div>
           </Route>
           <Route path="/ex">{auth ? <Quiz /> : <Redirect to="/" />}</Route>
+          <Route path="/results">
+            {auth ? <Results /> : <Redirect to="/" />}
+          </Route>
         </Switch>
       </Router>
     </div>

@@ -4,13 +4,26 @@ import { addAnswer } from 'redux/actions/';
 import PropTypes from 'prop-types';
 
 const Option = props => {
-  const { index, name, id, indexAnswer, isAnswer, selected, disabled } = props;
+  const {
+    indexOption,
+    nameoption,
+    id,
+    indexAnswer,
+    isAnswer,
+    selected,
+    disabled,
+    checkAnswer,
+  } = props;
   const dispatch = useDispatch();
+
   const setAnswer = e => {
     dispatch(addAnswer({ indexAnswer, isAnswer, id: e.target.id }));
   };
+
+  const colorOption = isAnswer ? { color: 'blue' } : { color: 'red' };
+
   let order;
-  switch (index) {
+  switch (indexOption) {
     case 0:
       order = 'A';
       break;
@@ -28,7 +41,7 @@ const Option = props => {
   }
   return (
     <div className="app-answer__item">
-      <label htmlFor={id}>
+      <label htmlFor={id} style={checkAnswer ? colorOption : null}>
         <input
           id={id}
           name={`question${indexAnswer + 1}`}
@@ -37,7 +50,7 @@ const Option = props => {
           onChange={setAnswer}
           defaultChecked={id === selected}
         />
-        {order}: {name}
+        {order}: {nameoption}
         <span className="checkmark" />
       </label>
     </div>
@@ -45,17 +58,14 @@ const Option = props => {
 };
 
 Option.propTypes = {
-  index: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  indexOption: PropTypes.number.isRequired,
+  nameoption: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   indexAnswer: PropTypes.number.isRequired,
-  selected: PropTypes.number,
+  selected: PropTypes.number.isRequired,
   isAnswer: PropTypes.bool.isRequired,
+  checkAnswer: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
-};
-
-Option.defaultProps = {
-  selected: 0,
 };
 
 export default React.memo(Option);

@@ -1,26 +1,43 @@
 import React from 'react';
-import Option from 'components/Option';
+import Option from 'components/question/Option';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const Question = props => {
-  const { indexQuestion, name, options, disabled } = props;
+  const {
+    indexQuestion,
+    nameQuestion,
+    options,
+    disabledOption,
+    checkAnswer,
+  } = props;
   const { answers } = useSelector(state => state);
 
   const selectedOption = answers[indexQuestion]
     ? Number(answers[indexQuestion].id)
     : 0;
 
+  const resultAnswer = answers[indexQuestion].isAnswer ? (
+    <h5 style={{ color: 'blue', fontStyle: 'italic', fontSize: '20px' }}>
+      Your answer is Correct.
+    </h5>
+  ) : (
+    <h5 style={{ color: 'red', fontStyle: 'italic', fontSize: '20px' }}>
+      Your answer is Wrong.
+    </h5>
+  );
+
   const listOption = options.map((option, index) => (
     <Option
       key={option.id}
-      index={index}
-      name={option.name}
+      nameoption={option.name}
       id={option.id}
-      indexAnswer={indexQuestion}
       isAnswer={option.isAnswer}
+      indexOption={index}
+      indexAnswer={indexQuestion}
       selected={selectedOption}
-      disabled={disabled}
+      disabled={disabledOption}
+      checkAnswer={checkAnswer}
     />
   ));
   return (
@@ -29,8 +46,9 @@ const Question = props => {
         <h2 className="app__heading app__heading--italic">
           Question {indexQuestion + 1}:
         </h2>
-        <div className="app__question">{name}</div>
+        <div className="app__question">{nameQuestion}</div>
         <div className="app-answer">{listOption}</div>
+        <div>{checkAnswer ? resultAnswer : null}</div>
       </div>
     </>
   );
@@ -38,8 +56,9 @@ const Question = props => {
 
 Question.propTypes = {
   indexQuestion: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  disabled: PropTypes.bool.isRequired,
+  nameQuestion: PropTypes.string.isRequired,
+  disabledOption: PropTypes.bool.isRequired,
+  checkAnswer: PropTypes.bool.isRequired,
   options: PropTypes.instanceOf(Array).isRequired,
 };
 
