@@ -1,11 +1,28 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from 'react-router-dom';
+import { fetchQuestions } from 'redux/actions/';
+import { useDispatch, useSelector } from 'react-redux';
+import Quiz from 'components/Quiz';
 import 'App.scss';
-import Question from './components/Question';
 
 const App = () => {
+  const auth = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchQuestions());
+  }, [dispatch]);
+
   return (
     <div className="app">
+      <div className="app__title">
+        <h1> QUIZ APP </h1>
+      </div>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -14,14 +31,11 @@ const App = () => {
                 Welcome to quiz app
               </h2>
               <Link to="/ex" className="app__link">
-                {' '}
-                Start{' '}
+                Start
               </Link>
             </div>
           </Route>
-          <Route path="/ex">
-            <Question />
-          </Route>
+          <Route path="/ex">{auth ? <Quiz /> : <Redirect to="/" />}</Route>
         </Switch>
       </Router>
     </div>
