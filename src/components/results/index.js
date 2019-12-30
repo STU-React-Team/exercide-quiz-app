@@ -10,7 +10,7 @@ const Results = () => {
 
   const onResetAnswer = () => dispatch(resetAnswer());
 
-  const correctAnswers = answers.filter((answer) => answer.isAnswer).length;
+  const correctAnswers = answers.filter(answer => answer.isAnswer).length;
   const listResult = questions.map((question, index) => (
     <Question
       key={question.id}
@@ -23,7 +23,9 @@ const Results = () => {
   ));
   return (
     <>
-      <h2 className="app__heading app__heading--blue">Result: {correctAnswers} of 10</h2>
+      <h2 className="app__heading app__heading--blue">
+        Result: {correctAnswers} of 10
+      </h2>
       <div>{listResult}</div>
       <div className="container app__control">
         <Link to="/" className="app__link" onClick={onResetAnswer}>
