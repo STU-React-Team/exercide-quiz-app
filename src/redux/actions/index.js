@@ -29,3 +29,16 @@ export const addAnswer = data => {
     paydoad: data,
   };
 };
+
+export const resetAnswer = () => {
+  return {
+    type: 'RESET_ANSWER',
+  };
+};
+
+export const onShowBtnFinish = data => {
+  return {
+    type: 'SHOW_BTN_FINISH',
+    paydoad: data,
+  };
+};

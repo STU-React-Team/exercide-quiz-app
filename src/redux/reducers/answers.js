@@ -1,6 +1,9 @@
 const initialState = new Array(10);
 
-export default function answer(state = initialState, action) {
+export default function answer(
+  state = initialState.fill({ isAnswer: false }),
+  action,
+) {
   switch (action.type) {
     case 'ADD_ANSWER':
       state.splice(action.paydoad.indexAnswer, 1, {
@@ -8,6 +11,8 @@ export default function answer(state = initialState, action) {
         id: action.paydoad.id,
       });
       return state;
+    case 'RESET_ANSWER':
+      return initialState.fill({ isAnswer: false });
     default:
       return state;
   }
