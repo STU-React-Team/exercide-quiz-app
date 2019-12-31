@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Question from 'components/question/';
-import { onShowBtnFinish } from 'redux/actions/';
+import { onShowBtnFinish } from 'actions/';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -17,9 +17,7 @@ const Quiz = () => {
   };
   useEffect(() => {
     document.addEventListener('click', onShowModal);
-    return () => {
-      document.removeEventListener('click', onShowModal);
-    };
+    return () => document.removeEventListener('click', onShowModal);
   });
 
   const onPrevQuestion = e => {
@@ -27,8 +25,8 @@ const Quiz = () => {
     else setIndexQuestion(indexQuestion - 1);
   };
   const onNextQuestion = e => {
-    if (indexQuestion === 9) e.preventDefault();
-    else if (indexQuestion === 8) {
+    if (indexQuestion === questions.length - 1) e.preventDefault();
+    else if (indexQuestion === questions.length - 2) {
       dispatch(onShowBtnFinish(true));
       setIndexQuestion(indexQuestion + 1);
     } else setIndexQuestion(indexQuestion + 1);
@@ -65,6 +63,7 @@ const Quiz = () => {
         disabledOption={false}
         checkAnswer={false}
       />
+
       <div className="app__control">
         <div>
           <button
@@ -77,13 +76,6 @@ const Quiz = () => {
           </button>
         </div>
         <div>
-          {showBtnFinish ? (
-            <button className="app__link" data-show_modal type="button">
-              Finish
-            </button>
-          ) : null}
-        </div>
-        <div>
           <button
             className={
               indexQuestion > 8 ? 'app__link app__link--disable' : 'app__link'
@@ -92,6 +84,13 @@ const Quiz = () => {
             onClick={onNextQuestion}>
             Next
           </button>
+        </div>
+        <div>
+          {showBtnFinish ? (
+            <button className="app__link" data-show_modal type="button">
+              Finish
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

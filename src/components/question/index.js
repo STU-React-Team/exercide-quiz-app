@@ -31,11 +31,11 @@ const Question = props => {
     <Option
       key={option.id}
       nameoption={option.name}
-      id={option.id}
+      idOption={option.id}
       isAnswer={option.isAnswer}
       indexOption={index}
       indexAnswer={indexQuestion}
-      selected={selectedOption}
+      selectedIdOption={selectedOption}
       disabled={disabledOption}
       checkAnswer={checkAnswer}
     />
