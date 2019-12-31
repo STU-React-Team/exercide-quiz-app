@@ -63,7 +63,7 @@ const Quiz = () => {
         disabledOption={false}
         checkAnswer={false}
       />
-      
+
       <div className="app__control">
         <div>
           <button
