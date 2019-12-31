@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Quiz = () => {
   const [indexQuestion, setIndexQuestion] = useState(0);
   const [isModal, setIsModal] = useState(false);
-  const { questions, showBtnFinish } = useSelector(state => state);
+  const { questions, isBtnFinish } = useSelector(state => state);
   const { options, name } = questions[indexQuestion];
   const dispatch = useDispatch();
 
@@ -63,7 +63,7 @@ const Quiz = () => {
         disabledOption={false}
         checkAnswer={false}
       />
-      
+
       <div className="app__control">
         <div>
           <button
@@ -86,7 +86,7 @@ const Quiz = () => {
           </button>
         </div>
         <div>
-          {showBtnFinish ? (
+          {isBtnFinish ? (
             <button className="app__link" data-show_modal type="button">
               Finish
             </button>

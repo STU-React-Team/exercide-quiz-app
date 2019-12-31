@@ -11,7 +11,7 @@ const Option = props => {
     indexAnswer,
     isAnswer,
     selectedIdOption,
-    disabled, 
+    disabled,
     checkAnswer,
   } = props;
   const dispatch = useDispatch();
@@ -21,8 +21,8 @@ const Option = props => {
   };
 
   const colorOption = isAnswer ? { color: 'blue' } : { color: 'red' };
-  const hideOption = (idOption === selectedIdOption) ? null : { display: 'none' } 
-  const bgColorCheckmark = isAnswer ? null : { backgroundColor: 'red' }
+  const hideOption = idOption === selectedIdOption ? null : { display: 'none' };
+  const bgColorCheckmark = isAnswer ? null : { backgroundColor: 'red' };
 
   let order;
   switch (indexOption) {
@@ -53,7 +53,10 @@ const Option = props => {
           defaultChecked={idOption === selectedIdOption}
         />
         {order}: {nameoption}
-        <span className="checkmark" style={checkAnswer ? bgColorCheckmark : null}/>
+        <span
+          className="checkmark"
+          style={checkAnswer ? bgColorCheckmark : null}
+        />
       </label>
     </div>
   );

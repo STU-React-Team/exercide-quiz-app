@@ -11,7 +11,7 @@ const Results = () => {
   const onResetAnswer = () => {
     dispatch(resetAnswer());
     dispatch(onShowBtnFinish(false));
-  }
+  };
 
   const correctAnswers = answers.filter(answer => answer.isAnswer).length;
   const listResult = questions.map((question, index) => (
