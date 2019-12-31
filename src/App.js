@@ -6,7 +6,7 @@ import {
   Link,
   Redirect,
 } from 'react-router-dom';
-import { fetchQuestions } from 'redux/actions/';
+import { fetchQuestions } from 'actions/';
 import { useDispatch, useSelector } from 'react-redux';
 import Quiz from 'components/quiz/';
 import Results from 'components/results/';

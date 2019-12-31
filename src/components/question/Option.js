@@ -1,17 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addAnswer } from 'redux/actions/';
+import { addAnswer } from 'actions/';
 import PropTypes from 'prop-types';
 
 const Option = props => {
   const {
     indexOption,
     nameoption,
-    id,
+    idOption,
     indexAnswer,
     isAnswer,
-    selected,
-    disabled,
+    selectedIdOption,
+    disabled, 
     checkAnswer,
   } = props;
   const dispatch = useDispatch();
@@ -21,6 +21,8 @@ const Option = props => {
   };
 
   const colorOption = isAnswer ? { color: 'blue' } : { color: 'red' };
+  const hideOption = (idOption === selectedIdOption) ? null : { display: 'none' } 
+  const bgColorCheckmark = isAnswer ? null : { backgroundColor: 'red' }
 
   let order;
   switch (indexOption) {
@@ -40,18 +42,18 @@ const Option = props => {
       break;
   }
   return (
-    <div className="app-answer__item">
-      <label htmlFor={id} style={checkAnswer ? colorOption : null}>
+    <div className="app-answer__item" style={checkAnswer ? hideOption : null}>
+      <label htmlFor={idOption} style={checkAnswer ? colorOption : null}>
         <input
-          id={id}
+          id={idOption}
           name={`question${indexAnswer + 1}`}
           type="radio"
           disabled={disabled}
           onChange={setAnswer}
-          defaultChecked={id === selected}
+          defaultChecked={idOption === selectedIdOption}
         />
         {order}: {nameoption}
-        <span className="checkmark" />
+        <span className="checkmark" style={checkAnswer ? bgColorCheckmark : null}/>
       </label>
     </div>
   );
@@ -60,9 +62,9 @@ const Option = props => {
 Option.propTypes = {
   indexOption: PropTypes.number.isRequired,
   nameoption: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  idOption: PropTypes.number.isRequired,
   indexAnswer: PropTypes.number.isRequired,
-  selected: PropTypes.number.isRequired,
+  selectedIdOption: PropTypes.number.isRequired,
   isAnswer: PropTypes.bool.isRequired,
   checkAnswer: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
