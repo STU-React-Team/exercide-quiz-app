@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { addAnswer } from 'actions/';
 import PropTypes from 'prop-types';
 
@@ -13,11 +13,11 @@ const Option = props => {
     selectedIdOption,
     disabled,
     checkAnswer,
+    onAddAnswer,
   } = props;
-  const dispatch = useDispatch();
 
   const setAnswer = e => {
-    dispatch(addAnswer({ indexAnswer, isAnswer, id: e.target.id }));
+    onAddAnswer({ indexAnswer, isAnswer, id: e.target.id });
   };
 
   const colorOption = isAnswer ? { color: 'blue' } : { color: 'red' };
@@ -71,6 +71,11 @@ Option.propTypes = {
   isAnswer: PropTypes.bool.isRequired,
   checkAnswer: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
+  onAddAnswer: PropTypes.func.isRequired,
 };
 
-export default React.memo(Option);
+const mapDispatchToProps = dispatch => ({
+  onAddAnswer: data => dispatch(addAnswer(data)),
+});
+
+export default React.memo(connect(null, mapDispatchToProps)(Option));

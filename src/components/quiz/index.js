@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Question from 'components/question/';
-import { onShowBtnFinish } from 'actions/';
-import { useSelector, useDispatch } from 'react-redux';
+import { showBtnFinish } from 'actions/';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const Quiz = () => {
+const Quiz = ({ listQuestion, isBtnFinish, onShowBtnFinish }) => {
   const [indexQuestion, setIndexQuestion] = useState(0);
   const [isModal, setIsModal] = useState(false);
-  const { questions, isBtnFinish } = useSelector(state => state);
-  const { options, name } = questions[indexQuestion];
-  const dispatch = useDispatch();
+  const { options, name } = listQuestion[indexQuestion];
 
   const onShowModal = e => {
     const dataSetShowModal = e.target.dataset.show_modal;
@@ -25,9 +24,9 @@ const Quiz = () => {
     else setIndexQuestion(indexQuestion - 1);
   };
   const onNextQuestion = e => {
-    if (indexQuestion === questions.length - 1) e.preventDefault();
-    else if (indexQuestion === questions.length - 2) {
-      dispatch(onShowBtnFinish(true));
+    if (indexQuestion === listQuestion.length - 1) e.preventDefault();
+    else if (indexQuestion === listQuestion.length - 2) {
+      onShowBtnFinish(true);
       setIndexQuestion(indexQuestion + 1);
     } else setIndexQuestion(indexQuestion + 1);
   };
@@ -86,15 +85,30 @@ const Quiz = () => {
           </button>
         </div>
         <div>
-          {isBtnFinish ? (
+          {isBtnFinish && (
             <button className="app__link" data-show_modal type="button">
               Finish
             </button>
-          ) : null}
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default Quiz;
+Quiz.propTypes = {
+  listQuestion: PropTypes.instanceOf(Array).isRequired,
+  isBtnFinish: PropTypes.bool.isRequired,
+  onShowBtnFinish: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  listQuestion: state.questions,
+  isBtnFinish: state.isBtnFinish,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onShowBtnFinish: data => dispatch(showBtnFinish(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Quiz);

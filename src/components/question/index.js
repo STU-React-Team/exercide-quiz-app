@@ -1,23 +1,23 @@
 import React from 'react';
 import Option from 'components/question/Option';
-import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const Question = props => {
   const {
+    listAnswer,
+    options,
     indexQuestion,
     nameQuestion,
-    options,
     disabledOption,
     checkAnswer,
   } = props;
-  const { answers } = useSelector(state => state);
 
-  const selectedOption = answers[indexQuestion]
-    ? Number(answers[indexQuestion].id)
+  const selectedOption = listAnswer[indexQuestion]
+    ? Number(listAnswer[indexQuestion].id)
     : 0;
 
-  const resultAnswer = answers[indexQuestion].isAnswer ? (
+  const resultAnswer = listAnswer[indexQuestion].isAnswer ? (
     <h5 style={{ color: 'blue', fontStyle: 'italic', fontSize: '20px' }}>
       Your answer is Correct.
     </h5>
@@ -60,6 +60,11 @@ Question.propTypes = {
   disabledOption: PropTypes.bool.isRequired,
   checkAnswer: PropTypes.bool.isRequired,
   options: PropTypes.instanceOf(Array).isRequired,
+  listAnswer: PropTypes.instanceOf(Array).isRequired,
 };
 
-export default React.memo(Question);
+const mapStateToProps = state => ({
+  listAnswer: state.answers,
+});
+
+export default React.memo(connect(mapStateToProps, null)(Question));
