@@ -2,13 +2,13 @@ import { combineReducers } from 'redux';
 import questions from 'reducers/questions';
 import answers from 'reducers/answers';
 import auth from 'reducers/auth';
-import showBtnFinish from 'reducers/showBtnFinish';
+import isBtnFinish from 'reducers/showBtnFinish';
 
 const rootReducer = combineReducers({
   questions,
   answers,
   auth,
-  showBtnFinish,
+  isBtnFinish,
 });
 
 export default rootReducer;

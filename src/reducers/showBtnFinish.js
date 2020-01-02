@@ -1,6 +1,6 @@
 const initialState = false;
 
-const showBtnFinish = (state = initialState, action) => {
+const isBtnFinish = (state = initialState, action) => {
   switch (action.type) {
     case 'SHOW_BTN_FINISH':
       return action.paydoad;
@@ -9,4 +9,4 @@ const showBtnFinish = (state = initialState, action) => {
   }
 };
 
-export default showBtnFinish;
+export default isBtnFinish;

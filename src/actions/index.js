@@ -1,44 +1,26 @@
-export const setAuth = data => {
-  return {
-    type: 'SET_AUTH',
-    paydoad: data,
-  };
+import axios from 'axios';
+
+export const setAuth = data => ({ type: 'SET_AUTH', paydoad: data });
+
+const receiveQuestions = data => ({ type: 'RECEIVE_QUESTIONS', paydoad: data });
+
+export const fetchQuestions = () => dispatch => {
+  dispatch(setAuth(true));
+  axios
+    .get(`http://5e05c2032f5dff0014f7dd4f.mockapi.io/quizApp`)
+    .then(res => dispatch(dispatch(receiveQuestions(res.data))));
 };
 
-const receiveQuestions = data => {
-  return {
-    type: 'RECEIVE_QUESTIONS',
-    paydoad: data,
-  };
-};
+export const addAnswer = data => ({ type: 'ADD_ANSWER', paydoad: data });
 
-export const fetchQuestions = () => {
-  return async dispatch => {
-    dispatch(setAuth(true));
-    const response = await fetch(
-      `http://5e05c2032f5dff0014f7dd4f.mockapi.io/quizApp`,
-    );
-    const json = await response.json();
-    return dispatch(receiveQuestions(json));
-  };
-};
+const resetAnswer = () => ({ type: 'RESET_ANSWER' });
 
-export const addAnswer = data => {
-  return {
-    type: 'ADD_ANSWER',
-    paydoad: data,
-  };
-};
+export const showBtnFinish = data => ({
+  type: 'SHOW_BTN_FINISH',
+  paydoad: data,
+});
 
-export const resetAnswer = () => {
-  return {
-    type: 'RESET_ANSWER',
-  };
-};
-
-export const onShowBtnFinish = data => {
-  return {
-    type: 'SHOW_BTN_FINISH',
-    paydoad: data,
-  };
+export const resetApp = () => dispatch => {
+  dispatch(resetAnswer());
+  dispatch(showBtnFinish(false));
 };

@@ -1,20 +1,13 @@
 import React from 'react';
 import Question from 'components/question/';
-import { useSelector, useDispatch } from 'react-redux';
-import { resetAnswer, onShowBtnFinish } from 'actions/';
+import { connect } from 'react-redux';
+import { resetApp } from 'actions/';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const Results = () => {
-  const dispatch = useDispatch();
-  const { questions, answers } = useSelector(state => state);
-
-  const onResetAnswer = () => {
-    dispatch(resetAnswer());
-    dispatch(onShowBtnFinish(false));
-  };
-
-  const correctAnswers = answers.filter(answer => answer.isAnswer).length;
-  const listResult = questions.map((question, index) => (
+const Results = ({ listQuestion, listAnswer, onResetApp }) => {
+  const correctAnswers = listAnswer.filter(answer => answer.isAnswer).length;
+  const listResult = listQuestion.map((question, index) => (
     <Question
       key={question.id}
       nameQuestion={question.name}
@@ -27,11 +20,11 @@ const Results = () => {
   return (
     <>
       <h2 className="app__heading app__heading--blue">
-        Result: {correctAnswers} of {questions.length}
+        Result: {correctAnswers} of {listQuestion.length}
       </h2>
       <div>{listResult}</div>
       <div className="container app__control">
-        <Link to="/" className="app__link" onClick={onResetAnswer}>
+        <Link to="/" className="app__link" onClick={onResetApp}>
           Again
         </Link>
       </div>
@@ -39,4 +32,19 @@ const Results = () => {
   );
 };
 
-export default Results;
+Results.propTypes = {
+  listQuestion: PropTypes.instanceOf(Array).isRequired,
+  listAnswer: PropTypes.instanceOf(Array).isRequired,
+  onResetApp: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  listQuestion: state.questions,
+  listAnswer: state.answers,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onResetApp: () => dispatch(resetApp()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Results);
