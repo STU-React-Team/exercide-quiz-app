@@ -1,25 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import BarButtonAction from './modules/layouts/BarButtonAction';
+import Header from './modules/layouts/Header';
+import QuestionWrapper from './modules/layouts/QuestionWrapper';
+import Result from './modules/layouts/Result';
+import './modules/layouts/QuestionStyle.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-        <p>
-          Edit
-          <code>src/App.js</code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <QuestionWrapper />
+      <BarButtonAction />
+      <Result />
     </div>
   );
 }

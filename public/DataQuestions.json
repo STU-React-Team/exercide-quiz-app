@@ -1,0 +1,236 @@
+{
+	"questions": [{
+			"id": 1,
+			"content": "Để cài đặt thêm các bộ Font trong môi trường Windows, ta dùng chức năng : ",
+			"listOption": [
+        {
+					"id": 1,
+					"contentOption": "Desktop của Control Panel."
+				},
+				{
+					"id": 2,
+					"contentOption": "System của Control Panel."
+				},
+				{
+					"id": 3,
+					"contentOption": "Regional Settings của Control Panel."
+				},
+				{
+					"id": 4,
+					"contentOption": "Fonts của Control Panel."
+				}
+			],
+			"answer": 4,
+			"selected": 0
+		},
+		{
+			"id": 2,
+			"content": "1MB (Mega byte) bằng : ",
+			"listOption": [
+        {
+					"id": 1,
+					"contentOption": "1024 GB."
+				},
+				{
+					"id": 2,
+					"contentOption": "1024 KB."
+				},
+				{
+					"id": 3,
+					"contentOption": "1000 KB."
+				},
+				{
+					"id": 4,
+					"contentOption": "1000B."
+				}
+			],
+			"answer": 2,
+			"selected": 0
+		},
+		{
+			"id": 3,
+			"content": "Đặc điểm chính của Virus máy tính là :",
+			"listOption": [
+        {
+					"id": 1,
+					"contentOption": "Phá hoại"
+				},
+				{
+					"id": 2,
+					"contentOption": "Lây lan"
+				},
+				{
+					"id": 3,
+					"contentOption": "Tự nhân bản"
+				},
+				{
+					"id": 4,
+					"contentOption": "Cả 3 câu A,B,C đều đúng"
+				}
+			],
+			"answer": 4,
+			"selected": 0
+		},
+		{
+			"id": 4,
+			"content": "Có thể hồi phục (restore) các tập tin bị xoá sau khi nhấn phím Delete bằng cách:",
+			"listOption": [{
+					"id": 1,
+					"contentOption": "Mở Recycle Bin"
+				},
+				{
+					"id": 2,
+					"contentOption": "Mở Internet Explorer"
+				},
+				{
+					"id": 3,
+					"contentOption": "Mở My Computer"
+				},
+				{
+					"id": 4,
+					"contentOption": "Mở My Documents"
+				}
+			],
+			"answer": 1,
+			"selected": 0
+		},
+		{
+			"id": 5,
+			"content": "Để chọn cửa sổ của chương trình cần làm việc trong Windows ta chọn:",
+			"listOption": [{
+					"id": 1,
+					"contentOption": "Nhấn chọn biểu tượng chương trình trên thanh Taskbar."
+				},
+				{
+					"id": 2,
+					"contentOption": "Nhấn giữ phím Alt và gõ phím Tab cho đến khi chọn được chương trình."
+				},
+				{
+					"id": 3,
+					"contentOption": "(A) và (B) đúng"
+				},
+				{
+					"id": 4,
+					"contentOption": "(A) và (B) sai"
+				}
+			],
+			"answer": 3,
+			"selected": 0
+		},
+		{
+			"id": 6,
+			"content": "Đơn vị đo thông tin nhỏ nhất là :",
+			"listOption": [{
+					"id": 1,
+					"contentOption": "Byte"
+				},
+				{
+					"id": 2,
+					"contentOption": "Kilobite"
+				},
+				{
+					"id": 3,
+					"contentOption": "Bit"
+				},
+				{
+					"id": 4,
+					"contentOption": "Megabyte"
+				}
+			],
+			"answer": 3,
+			"selected": 0
+		},
+		{
+			"id": 7,
+			"content": " Khi mất điện, thông tin lưu trữ trong các thành phần nào sau đây bị mất:",
+			"listOption": [{
+					"id": 1,
+					"contentOption": "ROM"
+				},
+				{
+					"id": 2,
+					"contentOption": "RAM"
+				},
+				{
+					"id": 3,
+					"contentOption": "CPU"
+				},
+				{
+					"id": 4,
+					"contentOption": "Đĩa cứng"
+				}
+			],
+			"answer": 2,
+			"selected": 0
+		},
+		{
+			"id": 8,
+			"content": "Khi muốn sắp xếp các biểu tượng trên Desktop ta tiến hành cách nào sau đây:",
+			"listOption": [{
+					"id": 1,
+					"contentOption": "Nhấp chuột phải trên Desktop, chọn Arrange Icons By.."
+				},
+				{
+					"id": 2,
+					"contentOption": "Nhấp chuột phải trên My Computer, chọn Arrange Icons By..."
+				},
+				{
+					"id": 3,
+					"contentOption": "Nhấp chuột phải trên nút Start, chọn New shortcut..."
+				},
+				{
+					"id": 4,
+					"contentOption": "Nhấp chuột phải trên nút Start, chọn Arrange Icons By..."
+				}
+			],
+			"answer": 1,
+			"selected": 0
+		},
+		{
+			"id": 9,
+			"content": "Khi tìm kiếm tập tin, thư mục ký tự ' * ' dùng để:",
+			"listOption": [{
+					"id": 1,
+					"contentOption": "Không thể thay thế cho ký tự"
+				},
+				{
+					"id": 2,
+					"contentOption": "Thay thế cho 1 ký tự"
+				},
+				{
+					"id": 3,
+					"contentOption": "Thay thế cho dấu cách"
+				},
+				{
+					"id": 4,
+					"contentOption": "Thay thế cho 1 số ký tự"
+				}
+			],
+			"answer": 2,
+			"selected": 0
+		},
+		{
+			"id": 10,
+			"content": "Loại thiết bị nào sau đây lưu trữ dữ liệu dưới dạng từ :",
+			"listOption": [{
+					"id": 1,
+					"contentOption": "Đĩa cứng"
+				},
+				{
+					"id": 2,
+					"contentOption": "Đĩa CD"
+				},
+				{
+					"id": 3,
+					"contentOption": "Cả A, B đúng"
+				},
+				{
+					"id": 4,
+					"contentOption": "Cả A, B sai"
+				}
+			],
+			"answer": 3,
+			"selected": 0
+		}
+	]
+}
