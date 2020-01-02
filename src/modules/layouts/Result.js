@@ -50,7 +50,7 @@ const Result = props => {
       </li>
     );
   });
-  
+
   return (
     <div className="result-wrapper container-fluid">
       <h1>Result : {gameOver && `${counterResult()}/10`}</h1>

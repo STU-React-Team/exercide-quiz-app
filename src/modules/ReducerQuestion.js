@@ -1,4 +1,4 @@
-import ActionTypes from './ContantsQuestion';
+import ActionTypes from 'modules/ContantsQuestion';
 
 const initState = {
   currentQuestion: 1,

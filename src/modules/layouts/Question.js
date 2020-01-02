@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { onSelectedQuestion } from '../ActionQuestion';
+import { onSelectedQuestion } from 'modules/ActionQuestion';
 
 const Question = props => {
-  const { id, content, listOption, selected } = props;
+  const { id, content, listOption, selected, onSelectedQuestionDisp } = props;
   const [idOption, setIdOption] = useState(0);
-  const dispatch = useDispatch();
 
   const handleChangeOption = idOptionSelected => {
     setIdOption(idOptionSelected);
-    dispatch(onSelectedQuestion(id, idOptionSelected));
+    onSelectedQuestionDisp(id, idOptionSelected);
   };
 
   const checkSelectedQuestion = option => {
@@ -56,6 +55,11 @@ Question.propTypes = {
       contentOption: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  onSelectedQuestionDisp: PropTypes.func.isRequired
 };
 
-export default Question;
+
+const mapDispatchtoProps = dispatch => ({
+  onSelectedQuestionDisp: (id, idOptionSelected) => dispatch(onSelectedQuestion(id, idOptionSelected))
+})
+export default connect(null, mapDispatchtoProps)(Question);

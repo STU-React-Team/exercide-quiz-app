@@ -4,10 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
 import 'popper.js';
 import { Provider } from 'react-redux';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import store from './store'
+import 'index.css';
+import App from 'App';
+import * as serviceWorker from 'serviceWorker';
+import store from 'Store';
 
 // const store = createStore(ReducerQuestion, applyMiddleware(thunk));
 const rootElement = document.getElementById('root');

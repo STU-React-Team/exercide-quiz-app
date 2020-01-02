@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect, useDispatch } from 'react-redux';
-import { onNextQuestion, onPrevQuestion, getResult } from '../ActionQuestion';
+import { connect } from 'react-redux';
+import { onNextQuestion, onPrevQuestion, getResult } from 'modules/ActionQuestion';
 
 const BarButtonAction = props => {
-  const { currentQuestion } = props;
+  const { currentQuestion, getResultDisp, onNextQuestionDisp, onPrevQuestionDisp } = props;
   const [disableNext, setDisableNext] = useState(false);
   const [disablePrev, setDisablePrev] = useState(true);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (currentQuestion === 1) {
@@ -21,11 +20,12 @@ const BarButtonAction = props => {
         setDisableNext(true);
       }
     }
-  }, [currentQuestion, setDisableNext, setDisablePrev]);
+  }, [currentQuestion]);
+  
   const handleGetResult = () => {
     // eslint-disable-next-line no-alert
-    if( window.confirm("Are U SURE !!!! ???") ){
-      dispatch(getResult())
+    if (window.confirm('Are U SURE !!!! ???')) {
+      getResultDisp();
     }
   };
 
@@ -37,24 +37,21 @@ const BarButtonAction = props => {
             <button
               type="button"
               className="btn-prev"
-              onClick={() => dispatch(onPrevQuestion())}
+              onClick={() => onPrevQuestionDisp()}
               disabled={disablePrev}>
               <i className="fas fa-arrow-left" />
               Preview
             </button>
             <button
               type="button"
-              onClick={() => dispatch(onNextQuestion())}
+              onClick={() => onNextQuestionDisp()}
               disabled={disableNext}>
               Next
               <i className="fas fa-arrow-right" />
             </button>
           </div>
           <div className="col-xl-4 col-md-4 col-4">
-            <button
-              type="button"
-              onClick={handleGetResult}
-            >
+            <button type="button" onClick={handleGetResult}>
               Result
             </button>
           </div>
@@ -66,12 +63,17 @@ const BarButtonAction = props => {
 
 BarButtonAction.propTypes = {
   currentQuestion: PropTypes.number.isRequired,
+  getResultDisp: PropTypes.func.isRequired,
+  onPrevQuestionDisp: PropTypes.func.isRequired,
+  onNextQuestionDisp: PropTypes.func.isRequired
 };
 
-const mapStatetoProps = state => {
-  return {
+const mapStatetoProps = state => ({
     currentQuestion: state.reducerQuestion.currentQuestion,
-  };
-};
-
-export default connect(mapStatetoProps, null)(BarButtonAction);
+})
+const mapDispatchtoProps = dispatch => ({
+  getResultDisp: () => dispatch(getResult()),
+  onNextQuestionDisp: () => dispatch(onNextQuestion()),
+  onPrevQuestionDisp: () => dispatch(onPrevQuestion())
+})
+export default connect(mapStatetoProps, mapDispatchtoProps)(BarButtonAction);

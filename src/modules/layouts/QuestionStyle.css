@@ -37,7 +37,7 @@
 .btn-prev {
   margin-right: 20px;
 }
-.bar-button-wrapper > div > button:disabled{
+.bar-button-wrapper > div > button:disabled {
   opacity: 0.6;
 }
 
@@ -70,10 +70,10 @@
 .question-row {
   transition: 0.3s ease-in;
 }
-.question-input  {
+.question-input {
   background-color: #fff;
-  border-radius : 10px;
-  padding: 50px 20px ;
+  border-radius: 10px;
+  padding: 50px 20px;
 }
 .question-input > h1 {
   width: 100%;
@@ -92,25 +92,25 @@
   display: flex;
   align-items: center !important;
 }
-.option-item > input { 
-  margin-right : 10px
+.option-item > input {
+  margin-right: 10px;
 }
 .option-item > label {
-  margin:0 !important;
+  margin: 0 !important;
 }
-input[type=radio] + label {
+input[type='radio'] + label {
   text-align: left;
   display: block;
   margin: 0.2em;
   cursor: pointer;
   padding: 0.2em;
 }
-input[type=radio] {
+input[type='radio'] {
   display: none;
 }
 
-input[type=radio] + label:before {
-  content: "\2714";
+input[type='radio'] + label:before {
+  content: '\2714';
   border: 0.1em solid #000;
   border-radius: 0.2em;
   display: inline-block;
@@ -121,28 +121,28 @@ input[type=radio] + label:before {
   margin-right: 15px;
   vertical-align: bottom;
   color: transparent;
-  transition: .2s;
+  transition: 0.2s;
 }
 .question-row > button {
   margin: 0 auto;
 }
 
-input[type=radio] + label:active:before {
+input[type='radio'] + label:active:before {
   transform: scale(0);
 }
 
-input[type=radio]:checked + label:before {
+input[type='radio']:checked + label:before {
   background-color: MediumSeaGreen;
   border-color: MediumSeaGreen;
   color: #fff;
 }
 
-input[type=radio]:disabled + label:before {
+input[type='radio']:disabled + label:before {
   transform: scale(1);
   border-color: #aaa;
 }
 
-input[type=radio]:checked:disabled + label:before {
+input[type='radio']:checked:disabled + label:before {
   transform: scale(1);
   background-color: #bfb;
   border-color: #bfb;
@@ -152,13 +152,13 @@ input[type=radio]:checked:disabled + label:before {
 }
 
 .result-wrapper {
-  padding: 20px 0 ;
+  padding: 20px 0;
 }
 .result {
   margin: 0;
-  padding : 10px;
+  padding: 10px;
 }
-.l-result { 
+.l-result {
   text-align: left;
   list-style: none;
   padding: 0;
@@ -171,21 +171,17 @@ input[type=radio]:checked:disabled + label:before {
 }
 .l-result-option {
   list-style: none;
-  padding: 0;  
-  
+  padding: 0;
 }
 .l-result-option > li {
   background-color: #ccc;
   margin-bottom: 10px;
-  padding: 10px 0 10px 10px ;
-  
+  padding: 10px 0 10px 10px;
 }
-
-
 
 @media all and (max-width: 762px) {
   .header-wrapper > h1 {
-    font-size : 1.5rem;
+    font-size: 1.5rem;
     padding-left: 10px;
   }
   .header-wrapper > span {
@@ -198,7 +194,7 @@ input[type=radio]:checked:disabled + label:before {
   .question-input > h3 {
     font-size: 1.5rem;
     text-align: left;
-    padding-left: 10px
+    padding-left: 10px;
   }
   .question-options {
     flex-direction: column;
@@ -216,12 +212,13 @@ input[type=radio]:checked:disabled + label:before {
   .l-result {
     padding: 0 !important;
   }
-  
+
   .l-result > li {
     padding: 20px;
     margin-bottom: 10px;
   }
-  .l-result > li > h2 , .l-result > li > h3 {
+  .l-result > li > h2,
+  .l-result > li > h3 {
     font-size: 1.2rem;
   }
 }

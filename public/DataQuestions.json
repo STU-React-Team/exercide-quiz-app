@@ -1,9 +1,10 @@
 {
-	"questions": [{
+	"questions": [
+		{
 			"id": 1,
 			"content": "Để cài đặt thêm các bộ Font trong môi trường Windows, ta dùng chức năng : ",
 			"listOption": [
-        {
+				{
 					"id": 1,
 					"contentOption": "Desktop của Control Panel."
 				},
@@ -27,7 +28,7 @@
 			"id": 2,
 			"content": "1MB (Mega byte) bằng : ",
 			"listOption": [
-        {
+				{
 					"id": 1,
 					"contentOption": "1024 GB."
 				},
@@ -51,7 +52,7 @@
 			"id": 3,
 			"content": "Đặc điểm chính của Virus máy tính là :",
 			"listOption": [
-        {
+				{
 					"id": 1,
 					"contentOption": "Phá hoại"
 				},
@@ -74,7 +75,8 @@
 		{
 			"id": 4,
 			"content": "Có thể hồi phục (restore) các tập tin bị xoá sau khi nhấn phím Delete bằng cách:",
-			"listOption": [{
+			"listOption": [
+				{
 					"id": 1,
 					"contentOption": "Mở Recycle Bin"
 				},
@@ -97,7 +99,8 @@
 		{
 			"id": 5,
 			"content": "Để chọn cửa sổ của chương trình cần làm việc trong Windows ta chọn:",
-			"listOption": [{
+			"listOption": [
+				{
 					"id": 1,
 					"contentOption": "Nhấn chọn biểu tượng chương trình trên thanh Taskbar."
 				},
@@ -120,7 +123,8 @@
 		{
 			"id": 6,
 			"content": "Đơn vị đo thông tin nhỏ nhất là :",
-			"listOption": [{
+			"listOption": [
+				{
 					"id": 1,
 					"contentOption": "Byte"
 				},
@@ -143,7 +147,8 @@
 		{
 			"id": 7,
 			"content": " Khi mất điện, thông tin lưu trữ trong các thành phần nào sau đây bị mất:",
-			"listOption": [{
+			"listOption": [
+				{
 					"id": 1,
 					"contentOption": "ROM"
 				},
@@ -166,7 +171,8 @@
 		{
 			"id": 8,
 			"content": "Khi muốn sắp xếp các biểu tượng trên Desktop ta tiến hành cách nào sau đây:",
-			"listOption": [{
+			"listOption": [
+				{
 					"id": 1,
 					"contentOption": "Nhấp chuột phải trên Desktop, chọn Arrange Icons By.."
 				},
@@ -189,7 +195,8 @@
 		{
 			"id": 9,
 			"content": "Khi tìm kiếm tập tin, thư mục ký tự ' * ' dùng để:",
-			"listOption": [{
+			"listOption": [
+				{
 					"id": 1,
 					"contentOption": "Không thể thay thế cho ký tự"
 				},
@@ -212,7 +219,8 @@
 		{
 			"id": 10,
 			"content": "Loại thiết bị nào sau đây lưu trữ dữ liệu dưới dạng từ :",
-			"listOption": [{
+			"listOption": [
+				{
 					"id": 1,
 					"contentOption": "Đĩa cứng"
 				},

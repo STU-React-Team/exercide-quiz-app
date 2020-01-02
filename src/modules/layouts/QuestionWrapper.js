@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect, useDispatch } from 'react-redux';
-import { getListQuestion, onStartTime } from '../ActionQuestion';
-import Question from './Question';
+import { connect } from 'react-redux';
+import { getListQuestion, onStartTime } from 'modules/ActionQuestion';
+import Question from 'modules/layouts/Question';
 
 const QuestionWrapper = props => {
-  const { currentQuestion, questions, onTime, gameOver } = props;
+  const { currentQuestion, questions, onTime, gameOver, getListQuestionDisp, onStartTimeDisp } = props;
   const [start, setStart] = useState(false);
-  const dispatch = useDispatch();
 
   const handleStart = () => {
     setStart(true);
-    dispatch(onStartTime());
-    dispatch(getListQuestion());
+    onStartTimeDisp();
+    getListQuestionDisp();
   };
 
   return (
@@ -61,6 +60,8 @@ QuestionWrapper.propTypes = {
   ).isRequired,
   onTime: PropTypes.bool.isRequired,
   gameOver: PropTypes.bool.isRequired,
+  getListQuestionDisp: PropTypes.func.isRequired,
+  onStartTimeDisp: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -72,4 +73,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(QuestionWrapper);
+const mapDispatchtoProps = dispatch => (
+  {
+    onStartTimeDisp : () => dispatch(onStartTime()),
+    getListQuestionDisp : () => dispatch(getListQuestion())
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchtoProps)(QuestionWrapper);
