@@ -8,12 +8,10 @@ const initState = {
 };
 
 const ReducerQuestion = (state = initState, action) => {
-  // eslint-disable-next-line prefer-const
-  let { questions, currentQuestion } = state;
+  const { questions, currentQuestion } = state;
   switch (action.type) {
     case ActionTypes.GET_LIST_QUESTION:
       return { ...state, questions: action.payload };
-
     case ActionTypes.ON_SELECTED_ANSWER: {
       const { idQuestion, idOptionSelected } = action.payload;
       questions[idQuestion - 1].selected = idOptionSelected;

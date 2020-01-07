@@ -5,7 +5,14 @@ import { getListQuestion, onStartTime } from 'modules/ActionQuestion';
 import Question from 'modules/layouts/Question';
 
 const QuestionWrapper = props => {
-  const { currentQuestion, questions, onTime, gameOver, getListQuestionDisp, onStartTimeDisp } = props;
+  const {
+    currentQuestion,
+    questions,
+    onTime,
+    gameOver,
+    getListQuestionDisp,
+    onStartTimeDisp,
+  } = props;
   const [start, setStart] = useState(false);
 
   const handleStart = () => {
@@ -61,7 +68,7 @@ QuestionWrapper.propTypes = {
   onTime: PropTypes.bool.isRequired,
   gameOver: PropTypes.bool.isRequired,
   getListQuestionDisp: PropTypes.func.isRequired,
-  onStartTimeDisp: PropTypes.func.isRequired
+  onStartTimeDisp: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -72,12 +79,9 @@ const mapStateToProps = state => {
     onTime: state.reducerQuestion.onTime,
   };
 };
-
-const mapDispatchtoProps = dispatch => (
-  {
-    onStartTimeDisp : () => dispatch(onStartTime()),
-    getListQuestionDisp : () => dispatch(getListQuestion())
-  }
-)
+const mapDispatchtoProps = dispatch => ({
+  onStartTimeDisp: () => dispatch(onStartTime()),
+  getListQuestionDisp: () => dispatch(getListQuestion()),
+});
 
 export default connect(mapStateToProps, mapDispatchtoProps)(QuestionWrapper);

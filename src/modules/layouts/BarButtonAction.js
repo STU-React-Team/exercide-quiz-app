@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { onNextQuestion, onPrevQuestion, getResult } from 'modules/ActionQuestion';
+import {
+  onNextQuestion,
+  onPrevQuestion,
+  getResult,
+} from 'modules/ActionQuestion';
 
 const BarButtonAction = props => {
-  const { currentQuestion, getResultDisp, onNextQuestionDisp, onPrevQuestionDisp } = props;
+  const {
+    currentQuestion,
+    getResultDisp,
+    onNextQuestionDisp,
+    onPrevQuestionDisp,
+  } = props;
+  
   const [disableNext, setDisableNext] = useState(false);
   const [disablePrev, setDisablePrev] = useState(true);
 
@@ -21,7 +31,7 @@ const BarButtonAction = props => {
       }
     }
   }, [currentQuestion]);
-  
+
   const handleGetResult = () => {
     // eslint-disable-next-line no-alert
     if (window.confirm('Are U SURE !!!! ???')) {
@@ -46,7 +56,7 @@ const BarButtonAction = props => {
               type="button"
               onClick={() => onNextQuestionDisp()}
               disabled={disableNext}>
-              Next
+              Tiếp Theo
               <i className="fas fa-arrow-right" />
             </button>
           </div>
@@ -65,15 +75,15 @@ BarButtonAction.propTypes = {
   currentQuestion: PropTypes.number.isRequired,
   getResultDisp: PropTypes.func.isRequired,
   onPrevQuestionDisp: PropTypes.func.isRequired,
-  onNextQuestionDisp: PropTypes.func.isRequired
+  onNextQuestionDisp: PropTypes.func.isRequired,
 };
 
 const mapStatetoProps = state => ({
-    currentQuestion: state.reducerQuestion.currentQuestion,
-})
+  currentQuestion: state.reducerQuestion.currentQuestion,
+});
 const mapDispatchtoProps = dispatch => ({
   getResultDisp: () => dispatch(getResult()),
   onNextQuestionDisp: () => dispatch(onNextQuestion()),
-  onPrevQuestionDisp: () => dispatch(onPrevQuestion())
-})
+  onPrevQuestionDisp: () => dispatch(onPrevQuestion()),
+});
 export default connect(mapStatetoProps, mapDispatchtoProps)(BarButtonAction);

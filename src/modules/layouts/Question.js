@@ -55,11 +55,11 @@ Question.propTypes = {
       contentOption: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  onSelectedQuestionDisp: PropTypes.func.isRequired
+  onSelectedQuestionDisp: PropTypes.func.isRequired,
 };
 
-
 const mapDispatchtoProps = dispatch => ({
-  onSelectedQuestionDisp: (id, idOptionSelected) => dispatch(onSelectedQuestion(id, idOptionSelected))
-})
+  onSelectedQuestionDisp: (id, idOptionSelected) =>
+    dispatch(onSelectedQuestion(id, idOptionSelected)),
+});
 export default connect(null, mapDispatchtoProps)(Question);
