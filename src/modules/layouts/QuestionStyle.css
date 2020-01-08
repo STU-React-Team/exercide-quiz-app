@@ -1,0 +1,224 @@
+/* Header  */
+.header,
+.bar-button {
+  background-color: cornflowerblue;
+  padding: 10px 0;
+  min-height: 60px;
+  -webkit-box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 12px 0px rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.header-wrapper > h1 {
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  letter-spacing: 3px;
+  margin: 0;
+}
+.question-row > button,
+.bar-button-wrapper > div > button {
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  color: cornflowerblue;
+  transition: 0.2s ease-in;
+  font-weight: 600;
+  cursor: pointer;
+}
+.question-row > button {
+  background-color: #fff;
+}
+.btn-prev {
+  margin-right: 20px;
+}
+.bar-button-wrapper > div > button:disabled {
+  opacity: 0.6;
+}
+
+.header-wrapper > span {
+  height: 40px;
+  min-width: 120px;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+/* Bar Button  */
+.bar-button-wrapper > div > button {
+  width: 100px;
+}
+.bar-button-wrapper > div > button > i {
+  margin: 0 5px;
+}
+.bar-button-wrapper > div > button:hover,
+.question-row > button:hover {
+  color: green;
+}
+
+/* Question  */
+.question {
+  padding: 40px 0;
+  min-height: 300px;
+  background-color: #ccc;
+}
+
+.question-row {
+  transition: 0.3s ease-in;
+}
+.question-input {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 50px 20px;
+}
+.question-input > h1 {
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+.question-options {
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.option-item {
+  width: 50%;
+  display: flex;
+  align-items: center !important;
+}
+.option-item > input {
+  margin-right: 10px;
+}
+.option-item > label {
+  margin: 0 !important;
+}
+input[type='radio'] + label {
+  text-align: left;
+  display: block;
+  margin: 0.2em;
+  cursor: pointer;
+  padding: 0.2em;
+}
+input[type='radio'] {
+  display: none;
+}
+
+input[type='radio'] + label:before {
+  content: '\2714';
+  border: 0.1em solid #000;
+  border-radius: 0.2em;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  padding-left: 0.2em;
+  padding-bottom: 1.3em;
+  margin-right: 15px;
+  vertical-align: bottom;
+  color: transparent;
+  transition: 0.2s;
+}
+.question-row > button {
+  margin: 0 auto;
+}
+
+input[type='radio'] + label:active:before {
+  transform: scale(0);
+}
+
+input[type='radio']:checked + label:before {
+  background-color: MediumSeaGreen;
+  border-color: MediumSeaGreen;
+  color: #fff;
+}
+
+input[type='radio']:disabled + label:before {
+  transform: scale(1);
+  border-color: #aaa;
+}
+
+input[type='radio']:checked:disabled + label:before {
+  transform: scale(1);
+  background-color: #bfb;
+  border-color: #bfb;
+}
+.option-item > label {
+  font-size: 30px;
+}
+
+.result-wrapper {
+  padding: 20px 0;
+}
+.result {
+  margin: 0;
+  padding: 10px;
+}
+.l-result {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+}
+.l-result > li {
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.l-result-option {
+  list-style: none;
+  padding: 0;
+}
+.l-result-option > li {
+  background-color: #ccc;
+  margin-bottom: 10px;
+  padding: 10px 0 10px 10px;
+}
+
+@media all and (max-width: 762px) {
+  .header-wrapper > h1 {
+    font-size: 1.5rem;
+    padding-left: 10px;
+  }
+  .header-wrapper > span {
+    margin-right: 10px;
+  }
+  .bar-button-wrapper > div > button {
+    font-size: 15px;
+    width: 90px;
+  }
+  .question-input > h3 {
+    font-size: 1.5rem;
+    text-align: left;
+    padding-left: 10px;
+  }
+  .question-options {
+    flex-direction: column;
+  }
+  .question-options > .option-item {
+    width: 100%;
+  }
+  label:before {
+    width: 30px;
+    height: 20px;
+  }
+  .result {
+    padding: 10px;
+  }
+  .l-result {
+    padding: 0 !important;
+  }
+
+  .l-result > li {
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  .l-result > li > h2,
+  .l-result > li > h3 {
+    font-size: 1.2rem;
+  }
+}
